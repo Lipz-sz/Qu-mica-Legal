@@ -18,13 +18,24 @@ script = ExtResource("1_kdijb")
 atomsec_scene = ExtResource("3_kdijb")
 atomgood_scene = ExtResource("4_qrmce")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.89218545, 0.6563891, 0.52833337, 1)
+
 [node name="Entrega" parent="." instance=ExtResource("4_8q3i6")]
 
 [node name="Player" parent="." instance=ExtResource("1_bri2l")]
+position = Vector2(-100, 0)
 
 [node name="Atomsec" parent="." instance=ExtResource("3_kdijb")]
+position = Vector2(0, -100)
 
 [node name="Atomgood" parent="." instance=ExtResource("4_qrmce")]
+position = Vector2(0, -200)
 
 [node name="UI" parent="." instance=ExtResource("6_qrmce")]
 

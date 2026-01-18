@@ -79,8 +79,9 @@ func _on_body_entered(body: RigidBody2D): # aqui fica tudo que acontece quando e
 			sprite.scale = Vector2(0.13,0.13)
 			get_tree().queue_delete(body)
 			sprit_inferior(ligacao)
-			if ligacao == 3:
+			if ligacao >= 3:
 				label.text = "?"
+				_sofrer_erro(body)
 
 
 

@@ -1,25 +1,20 @@
 extends Node
 
+
 @export var atomsec_scene: PackedScene
 @export var atomgood_scene: PackedScene
 
 @onready var level: int = 1
 
 func start_level01():
+	$UI.show()
 	$Atomsec.set_level(level)
 	$StartTimer.start()
 	$Player.niveis_player(level)
 	$Atomgood.set_level(level)
-	$Atom.start($StartPosition.position)
+	$Player.start($StartPosition.position)
 	$UI.mensage_edit(level)
 
-func _ready():
-	$StartTimer.start()
-	$Player.start($StartPosition.position)
-	$Atomsec.set_level(level)
-	$Player.niveis_player(level)
-	$Atomgood.set_level(level)
-	$UI.mensage_edit(level)
 
 func _on_atomsec_timer_timeout(): # --> faz os Atomsec andar/surgir aleatoriamente pela tela
 	var atomsec = atomsec_scene.instantiate()

@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7nu8v52tt7pg"]
+
+[ext_resource type="FontFile" uid="uid://3uyusxqsrnfv" path="res://fonts/Banita.ttf" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://cmy8iqocrqtr1" path="res://menu.gd" id="1_ouk20"]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_ouk20")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.035000008, 0.65566653, 0.7, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_top = 23.0
+offset_right = 262.0
+offset_bottom = 287.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 80
+text = "Química Legal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = 44.0
+offset_right = 79.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 40
+text = "Jogar"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

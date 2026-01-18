@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://diugs2wivmh4p"]
+[gd_scene load_steps=4 format=3 uid="uid://diugs2wivmh4p"]
+
+[ext_resource type="Script" uid="uid://dtal2rypc844c" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://0m64vifbdhoy" path="res://level_01.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c7nu8v52tt7pg" path="res://menu.tscn" id="3_lquwl"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_h2yge")
+level_01 = ExtResource("2_1bvp3")
+
+[node name="Level01" parent="." instance=ExtResource("2_1bvp3")]
+
+[node name="Menu" parent="." instance=ExtResource("3_lquwl")]
+
+[connection signal="init_level" from="." to="Level01" method="start_level01"]
+[connection signal="start_game" from="Menu" to="." method="_new_game"]
