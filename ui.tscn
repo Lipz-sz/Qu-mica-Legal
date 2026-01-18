@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ff053gajpd7p"]
+
+[ext_resource type="Script" uid="uid://bb3huslty5457" path="res://ui.gd" id="1_m6e0p"]
+[ext_resource type="FontFile" uid="uid://3uyusxqsrnfv" path="res://fonts/Banita.ttf" id="2_27fn8"]
+[ext_resource type="Texture2D" uid="uid://2kj5b4kr8v4e" path="res://Sprites/Ligacao_level_1_incompleta.png" id="2_nltto"]
+[ext_resource type="Texture2D" uid="uid://bgwguled6psmj" path="res://Sprites/Ligacao_level_1_completa.png" id="3_ibotj"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_m6e0p")
+textures = Array[Texture2D]([ExtResource("2_nltto"), ExtResource("3_ibotj"), null])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(780, 640)
+scale = Vector2(0.14, 0.14)
+
+[node name="ErroLabel" type="Label" parent="."]
+offset_right = 79.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("2_27fn8")
+theme_override_font_sizes/font_size = 25
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MsgLabel" type="Label" parent="."]
+offset_right = 859.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("2_27fn8")
+theme_override_font_sizes/font_size = 26
+text = "ablublublé"
+horizontal_alignment = 1
+vertical_alignment = 1

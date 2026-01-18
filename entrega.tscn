@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnt8mvvvc5ql5"]
+
+[ext_resource type="Texture2D" uid="uid://yiuexchg4qt8" path="res://Sprites/entrega.png" id="1_ktrn0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b83t4"]
+size = Vector2(89, 46)
+
+[node name="Entrega" type="Area2D" groups=["entrega_group"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(48, 695)
+shape = SubResource("RectangleShape2D_b83t4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(46, 671)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("1_ktrn0")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 17.0
+offset_top = 675.0
+offset_right = 77.0
+offset_bottom = 722.0
+grow_horizontal = 2
+text = "Entrega"
+horizontal_alignment = 1
+vertical_alignment = 1

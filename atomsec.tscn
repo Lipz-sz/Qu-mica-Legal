@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bctchov87a60q"]
+
+[ext_resource type="Script" uid="uid://628qo6acownd" path="res://atomsec.gd" id="1_vbhp7"]
+[ext_resource type="Texture2D" uid="uid://m5i2yd7613c" path="res://Sprites/ÁTOMO_DO_MAL.png" id="2_p7h4n"]
+[ext_resource type="FontFile" uid="uid://3uyusxqsrnfv" path="res://fonts/Banita.ttf" id="3_dstdq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4s6lp"]
+radius = 28.01785
+
+[node name="Atomsec" type="RigidBody2D" groups=["atom_bad"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_vbhp7")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 2)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_p7h4n")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dstdq")
+theme_override_font_sizes/font_size = 25
+text = ")("
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4s6lp")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
