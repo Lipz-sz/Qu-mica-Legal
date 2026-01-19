@@ -3,17 +3,16 @@ extends Node
 @export var atomsec_scene: PackedScene
 @export var atomgood_scene: PackedScene
 
-@onready var level: int = 1
+var level: int = 3
 
-func start_level01():
+func _ready() -> void:
 	$UI.show()
 	$Atomsec.set_level(level)
-	$StartTimer.start()
+	$StartTimer.start() #assim que esse inicia também inicia o atomsec_timer e o atomgood_timer
 	$Player.niveis_player(level)
 	$Atomgood.set_level(level)
 	$Player.start($StartPosition.position)
 	$UI.mensage_edit(level)
-
 
 func _on_atomsec_timer_timeout(): # --> faz os Atomsec andar/surgir aleatoriamente pela tela
 	var atomsec = atomsec_scene.instantiate()
@@ -37,6 +36,8 @@ func _on_atomsec_timer_timeout(): # --> faz os Atomsec andar/surgir aleatoriamen
 	# Spawn the mob by adding it to the Main scene.
 	add_child(atomsec)
 	atomsec.set_level(level)
+
+
 
 func _on_atomgood_timer_timeout(): #--> Faz o AtomGood andar/surgir pela tela aleatoriamente
 	var atomgood = atomgood_scene.instantiate()

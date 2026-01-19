@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bv1088077lecw"]
+
+[ext_resource type="Script" uid="uid://isbw8m8kwnk6" path="res://level_03.gd" id="1_dm2hg"]
+[ext_resource type="PackedScene" uid="uid://dnt8mvvvc5ql5" path="res://entrega.tscn" id="2_1tw3a"]
+[ext_resource type="PackedScene" uid="uid://c2trfrsxr8pp6" path="res://player.tscn" id="3_nf86x"]
+[ext_resource type="PackedScene" uid="uid://bctchov87a60q" path="res://atomsec.tscn" id="4_xw5ke"]
+[ext_resource type="PackedScene" uid="uid://bdkwl1r7kpep7" path="res://atomgood.tscn" id="5_sht4o"]
+[ext_resource type="PackedScene" uid="uid://ff053gajpd7p" path="res://ui.tscn" id="6_6g3sl"]
+
+[sub_resource type="Curve2D" id="Curve2D_2jc71"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 859, 0, 0, 0, 0, 0, 860, 720, 0, 0, 0, 0, 0, 718, 0, 0, 0, 0, 0, -1)
+}
+point_count = 5
+
+[node name="Level03" type="Node"]
+script = ExtResource("1_dm2hg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4651159, 0.60867137, 0.1102963, 1)
+
+[node name="Entrega" parent="." instance=ExtResource("2_1tw3a")]
+
+[node name="Player" parent="." instance=ExtResource("3_nf86x")]
+position = Vector2(-100, 0)
+
+[node name="Atomsec" parent="." instance=ExtResource("4_xw5ke")]
+position = Vector2(0, -100)
+
+[node name="Atomgood" parent="." instance=ExtResource("5_sht4o")]
+position = Vector2(0, -200)
+
+[node name="UI" parent="." instance=ExtResource("6_6g3sl")]
+
+[node name="AtomsecTimer" type="Timer" parent="."]
+
+[node name="AtomgoodTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AtomPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_2jc71")
+
+[node name="AtomSpawn" type="PathFollow2D" parent="AtomPath"]
+position = Vector2(0, -1)
+rotation = 0.0011641439
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(440, 360)

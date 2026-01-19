@@ -5,9 +5,9 @@ extends RigidBody2D
 var rng := RandomNumberGenerator.new()
 
 var LEVEL_DIC : Dictionary = {
-	1: ["N", "O", "H", "Cl", "K"],
-	2: ["O","H"],
-	3: [""]
+	1: ["N","Na", "O", "Cl", "K","S","F"],
+	2: ["K","C","Cl", "Na", "S","F"],
+	3: ["K","Cl","Na","O","S","F"]
 }
 
 func _apply_random_label() -> void:

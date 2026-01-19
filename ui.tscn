@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://ff053gajpd7p"]
+[gd_scene load_steps=10 format=3 uid="uid://ff053gajpd7p"]
 
 [ext_resource type="Script" uid="uid://bb3huslty5457" path="res://ui.gd" id="1_m6e0p"]
 [ext_resource type="FontFile" uid="uid://3uyusxqsrnfv" path="res://fonts/Banita.ttf" id="2_27fn8"]
 [ext_resource type="Texture2D" uid="uid://2kj5b4kr8v4e" path="res://Sprites/Ligacao_level_1_incompleta.png" id="2_nltto"]
 [ext_resource type="Texture2D" uid="uid://bgwguled6psmj" path="res://Sprites/Ligacao_level_1_completa.png" id="3_ibotj"]
+[ext_resource type="Texture2D" uid="uid://dmx42t427tg6i" path="res://Sprites/Level02/H-C.png" id="4_ok7cu"]
+[ext_resource type="Texture2D" uid="uid://bejv8ttry2ppv" path="res://Sprites/Level02/H-C-H.png" id="5_irxef"]
+[ext_resource type="Texture2D" uid="uid://can3cxb3b8phb" path="res://Sprites/Level02/H-C-H-H.png" id="6_e2l4f"]
+[ext_resource type="Texture2D" uid="uid://cbsn3850esc6c" path="res://Sprites/Level02/H-C-H-H-O.png" id="7_n5rqp"]
+[ext_resource type="Texture2D" uid="uid://u4mdrdtbma7h" path="res://Sprites/Level02/H-C-H-H-O-H.png" id="8_gs482"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_m6e0p")
-textures = Array[Texture2D]([ExtResource("2_nltto"), ExtResource("3_ibotj"), null])
+textures = Array[Texture2D]([ExtResource("2_nltto"), ExtResource("3_ibotj"), ExtResource("4_ok7cu"), ExtResource("5_irxef"), ExtResource("6_e2l4f"), ExtResource("7_n5rqp"), ExtResource("8_gs482")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(780, 640)
