@@ -7,7 +7,7 @@ var rng := RandomNumberGenerator.new()
 var LEVEL_DIC : Dictionary = {
 	1: ["H"],
 	2: ["H", "O"],
-	3: ["C", "H"]
+	3: ["C", "H"],
 }
 	
 func _apply_random_label() -> void:

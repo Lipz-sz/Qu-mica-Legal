@@ -36,16 +36,14 @@ func niveis_player(level):
 		label.text = "C" 
 	if level == 3:	# TODO ainda falta escrever
 		level_global = level
-		label.text = "H"
+		label.text = "C"
 	if level == 4:	# TODO ainda falta escrever
 		level_global = level
 		label.text = "H"
 	if level == 5:	# TODO ainda falta escrever
 		level_global = level
 		label.text = "H"
-	if level == 6:	# TODO ainda falta escrever
-		level_global = level
-		label.text = "H"
+
 		
 func _process(delta): # --> Movimento do player
 	var velocity = Vector2.ZERO 
@@ -74,10 +72,10 @@ func _on_body_entered(body: RigidBody2D): # aqui fica tudo que acontece quando e
 	if body.is_in_group("atom_bad"):
 		_sofrer_erro(body)
 	elif body.is_in_group("atom_correct"):
-		level_body(body)
+		_level_body(body)
 
 
-func level_body(body) -> void:
+func _level_body(body) -> void:
 	var p := get_parent()
 	if p and p.name == "Level01":
 		if $"../Atomgood/Label".text == "H":
@@ -102,23 +100,37 @@ func level_body(body) -> void:
 				label.text = "?"
 			if ligacao > 6:
 				_sofrer_erro(body)
+	
+	if p and p.name == "Level03":
+		if $"../Atomgood/Label".text == "C" and "H":
+			ligacao += 1 # controle de Label
+			sprite.texture = textures[1]
+			sprite.scale = Vector2(0.12,0.12)
+			get_tree().queue_delete(body)
+			sprit_inferior(ligacao)
+			if ligacao == 4:
+				label.text = "?"
+			if ligacao > 4:
+				_sofrer_erro(body)
 
 
 func _on_area_entered(area: Area2D):
 	if area.is_in_group("entrega_group"):
 		if level_global == 1:
-			level_1()
+			_level_1()
 		if level_global == 2:
-			level_2()
+			_level_2()
+		if level_global == 3:
+			_level_3()
 
 #----------------------------LÓGICA DE NÍVEIS (ENTREGA) -----------------------------------
-func level_1():
+func _level_1():
 	if ligacao == 1:
 		msg_label.text = "Ainda falta um célula de Hidrogênio."
 		await get_tree().create_timer(2.5).timeout
-		msg_label.text = "Encontre os Hidrogênios para fomar o H₂O."
+		msg_label.text = "Faça a formula química (CH₃OH)"
 	elif ligacao == 2:
-		msg_label.position = Vector2(5,360)
+		msg_label.position = Vector2(200,360)
 		msg_label.text = "Parabéns!! Você formou o H₂O, mais conhecido como, água."
 		await get_tree().create_timer(2.5).timeout
 		get_tree().call_group("atom_correct","queue_free")
@@ -127,20 +139,20 @@ func level_1():
 		get_tree().change_scene_to_file("res://level_02.tscn")
 	elif ligacao >= 3:
 		msg_label.text = "Fórmula química não encontrada."
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(1.5).timeout
 		msg_label.text = "Reiniciando..."
 		await get_tree().create_timer(1.0).timeout
 		get_tree().reload_current_scene()
 
 
-func level_2():
+func _level_2():
 	if ligacao < 5:
 		msg_label.text = "Ainda falta outras células."
 		await get_tree().create_timer(2.5).timeout
-		msg_label.text = "Forme o a fórmula química do metanol (CH₃OH)."
+		msg_label.text = "Faça a formula química (CH₃OH)"
 		msg_label.scale = Vector2(20,20)
 	elif ligacao == 5:
-		msg_label.position = Vector2(5,360)
+		msg_label.position = Vector2(200,360)
 		msg_label.text = "Parabéns!! Você formou o CH₃OH, infelizmente conhecido por, metanol."
 		await get_tree().create_timer(2.0).timeout
 		get_tree().call_group("atom_correct","queue_free")
@@ -149,8 +161,30 @@ func level_2():
 		get_tree().change_scene_to_file("res://level_03.tscn")
 	elif ligacao >= 6:
 		msg_label.text = "Fórmula química não encontrada."
-
-			
+		await get_tree().create_timer(1.5).timeout
+		msg_label.text = "Reiniciando..."
+		await get_tree().create_timer(1.0).timeout
+		get_tree().reload_current_scene()
+func _level_3():
+	if ligacao < 3:
+		msg_label.text = "Ainda falta outras células."
+		await get_tree().create_timer(2.5).timeout
+		msg_label.text = "Faça a formula química (C₂H₂)."
+		msg_label.scale = Vector2(20,20)
+	elif ligacao == 3:
+		msg_label.position = Vector2(200,360)
+		msg_label.text = "Parabéns!! Você formou o Etino Acetileno, um gás utilizado em maçaricos."
+		await get_tree().create_timer(2.0).timeout
+		get_tree().call_group("atom_correct","queue_free")
+		get_tree().call_group("atom_bad","queue_free")
+		$"../StartTimer".stop()
+		get_tree().change_scene_to_file("res://level_03.tscn")
+	elif ligacao >= 4:
+		msg_label.text = "Fórmula química não encontrada."
+		await get_tree().create_timer(1.5).timeout
+		msg_label.text = "Reiniciando..."
+		await get_tree().create_timer(1.0).timeout
+		get_tree().reload_current_scene()
 #----------------------------LÓGICA DE NÍVEIS -----------------------------------
 			
 func sprit_inferior(_ligacao):
@@ -180,8 +214,19 @@ func sprit_inferior(_ligacao):
 		if ligacao == 5:
 			label.text = "CH₃OH"
 			$"../UI".sprite_show()
-
-
+			
+	if p and p.name == "Level03":
+		if ligacao == 1:
+			label.text = "C₂"
+			$"../UI".sprite_show()
+		if ligacao == 2:
+			label.text = "C₂H"
+			$"../UI".sprite_show()
+		if ligacao == 3:
+			label.text = "C₂H₂"
+			$"../UI".sprite_show()
+			
+	
 func _sofrer_erro(area_que_bateu: RigidBody2D):
 	if invulneravel:
 		return

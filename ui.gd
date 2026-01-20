@@ -6,11 +6,11 @@ var contador = 0
 
 func mensage_edit(level):
 	if level == 1:
-		$MsgLabel.text = "Encontre os Hidrogênios para fomar o H₂O"
+		$MsgLabel.text = "Faça a formula química (CH₃OH)"
 	if level == 2:
-		$MsgLabel.text = "Encontre as células pra fazer a fórmula química do metanol (CH₃OH)"
+		$MsgLabel.text = "Faça a formula química (CH₃OH)"
 	if level == 3:
-		$MsgLabel.text = "Encontre o Nitrogênio (H)"
+		$MsgLabel.text = "Faça a formula química (C₂H₂)."
 	if level == 4:
 		$MsgLabel.text = "Encontre o Nitrogênio (O)"
 	if level == 5:
@@ -45,3 +45,14 @@ func sprite_show():
 		if contador == 5:
 			sprite.texture = textures[6]
 			contador = 0
+	
+	if p and p.name == "Level03": # do 7-9
+		contador += 1
+		if contador == 1:
+			sprite.texture = textures[7]
+		if contador == 2:
+			sprite.texture = textures[8]
+		if contador == 3:
+			sprite.texture = textures[9]
+			contador = 0
+			
